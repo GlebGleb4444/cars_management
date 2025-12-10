@@ -1,17 +1,27 @@
+
 # Main program file
-
-require_relative 'autoload'
-
 class Main
-  def self.run
-    repo = CarRepository.new
+    def self.run
+      repo = CarRepository.new
 
-    params = Input.new.call
-    cars = repo.all
+      params = Input.new.call
+      cars = repo.all
 
-    filtered = SearchEngine.new.filter(cars, params)
-    sorted = Sorter.new.sort(filtered, params)
+      filtered = SearchEngine.new.filter(cars, params)
+      sorted = Sorter.new.sort(filtered, params)
 
-    sorted.each { |car| puts car }
-  end
+      history = SearchHistory.new('searches.yml')
+      history.save_search(params, sorted.length)
+
+      puts "-----------------------------------"
+      puts "Statistic:"
+      puts "Total Quantity: #{sorted.size}"
+
+      existing = history.find_entry(params)
+      puts "Requests quantity: #{existing['requests_quantity']}" if existing
+      puts "-----------------------------------"
+
+      puts "Search Results:"
+      sorted.each { |car| puts car }
+    end
 end
