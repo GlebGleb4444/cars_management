@@ -34,7 +34,9 @@ class Input
             "year_from" => year_from_user,
             "year_to" => year_to_user,
             "price_from" => price_from_user, 
-            "price_to" => price_to_user
+            "price_to" => price_to_user,
+            "sort_by" => sort_by,
+            "sort_direction" => sort_direction
         }
 
     end
