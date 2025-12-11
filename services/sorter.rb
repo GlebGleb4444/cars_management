@@ -13,6 +13,6 @@ class Sorter
             cars.sort_by { |car| Date.strptime(car.date_added, "%d/%m/%y") }
         end
 
-        direction == 'asc' ? sorted.reverse : sorted
+        direction == 'asc' ? sorted : sorted.reverse
     end
 end
