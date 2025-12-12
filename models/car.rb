@@ -23,7 +23,8 @@ class Car
       model.yellow,
       year.to_s.green,
       odometer.to_s,
-      price.to_s.green
+      price.to_s.green,
+      date_added.to_s.red
     ]
   end
 end
