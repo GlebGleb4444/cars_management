@@ -27,4 +27,3 @@ class Car
       date_added.to_s.red
     ]
   end
-end
