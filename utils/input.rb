@@ -2,29 +2,31 @@
 
 class Input
     def ask_user_for_search_params
+
+        puts "Please select search rules."
         
-        puts "Enter car make:"
+        puts "Please choose make:"
         make_user = gets.strip
 
-        puts "Enter car model:"
+        puts "Please choose model:"
         model_user = gets.strip
 
-        puts "Enter car year from:"
+        puts "Please choose year_from:"
         year_from_user = gets.strip
 
-        puts "Enter car year to:"
+        puts "Please choose year_to:"
         year_to_user = gets.strip
 
-        puts "Enter car price from:"
+        puts "Please choose price_from:"
         price_from_user = gets.strip
 
-        puts "Enter car price to:"
+        puts "Please choose price_to:"
         price_to_user = gets.strip
 
-        puts "How to sort results? (enter 'price', 'date_added' or leave blank for no sorting):"
+        puts "Please choose sort option (date_added|price):"
         sort_by = gets.strip
 
-        puts "Direction? (enter 'asc' for ascending, 'desc' for descending or leave blank for no sorting):"
+        puts "Please choose sort direction(desc|asc):"
         sort_direction = gets.strip
 
         # Car user input hash

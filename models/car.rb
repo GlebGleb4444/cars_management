@@ -29,4 +29,3 @@ class Car
         TEXT
       end
 end
-

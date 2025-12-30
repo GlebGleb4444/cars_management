@@ -7,10 +7,13 @@ class Sorter
         field = params["sort_by"]
         direction = params["sort_direction"]
 
-        sorted = if field == 'price'
-            cars.sort_by { |car| car.price.to_i }
-        else
-            cars.sort_by { |car| Date.strptime(car.date_added, "%d/%m/%y") }
+        sorted = cars.sort_by do |car|
+            case field
+            when "price"
+                car.price.to_i
+            else
+                Date.strptime(car.date_added, "%d/%m/%y")
+            end
         end
 
         direction == 'asc' ? sorted : sorted.reverse
