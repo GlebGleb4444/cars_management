@@ -7,7 +7,7 @@ class CarRepository
     DB_PATH = 'db.yml'
     
     def initialize(path: DB_PATH)
-        @data = YAML.load_file(path)
+        @data = YAML.safe_load(File.read(path), permitted_classes: [Date, Time], aliases: true)
     end
 
     def all
