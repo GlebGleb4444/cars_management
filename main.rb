@@ -24,3 +24,4 @@ class Main
     renderer.display_statistics(sorted, existed_entries)
     renderer.display_results(sorted)
   end
+end
