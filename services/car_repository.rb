@@ -4,7 +4,9 @@ require 'yaml'
 require_relative '../models/car'
 
 class CarRepository
-    def initialize(path)
+    DB_PATH = 'db.yml'
+    
+    def initialize(path: DB_PATH)
         @data = YAML.load_file(path)
     end
 
