@@ -7,7 +7,7 @@ require_relative 'services/sorter.rb'
 
 class Main
     def self.run
-      repo = CarRepository.new('db.yml')
+      repo = CarRepository.new
 
       params = Input.new.ask_user_for_search_params
       cars = repo.all
