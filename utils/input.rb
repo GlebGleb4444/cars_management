@@ -1,45 +1,35 @@
-# This class handles user input for car search parameters.
+# This class collects user input and builds a hash of car search parameters.
 
 class Input
-    def ask_user_for_search_params
+  SEARCH_FIELD_PROMPTS = {
+    make: 'Please choose make:',
+    model: 'Please choose model:',
+    year_from: 'Please choose year_from:',
+    year_to: 'Please choose year_to:',
+    price_from: 'Please choose price_from:',
+    price_to: 'Please choose price_to:'
+  }.freeze
 
-        puts "Please select search rules."
-        
-        puts "Please choose make:"
-        make_user = gets.strip
+  SORT_OPTION_PROMPTS = {
+    sort_by: 'Please choose sort option (date_added|price):',
+    sort_direction: 'Please choose sort direction(desc|asc):'
+  }.freeze
 
-        puts "Please choose model:"
-        model_user = gets.strip
+  def call
+    puts 'Please select search rules.'
 
-        puts "Please choose year_from:"
-        year_from_user = gets.strip
+    search_params = read_user_input(SEARCH_FIELD_PROMPTS)
+    sort_params = read_user_input(SORT_OPTION_PROMPTS)
 
-        puts "Please choose year_to:"
-        year_to_user = gets.strip
+    search_params.merge(sort_params)
+  end
 
-        puts "Please choose price_from:"
-        price_from_user = gets.strip
+  private
 
-        puts "Please choose price_to:"
-        price_to_user = gets.strip
-
-        puts "Please choose sort option (date_added|price):"
-        sort_by = gets.strip
-
-        puts "Please choose sort direction(desc|asc):"
-        sort_direction = gets.strip
-
-        # Car user input hash
-        {
-            "make" => make_user,
-            "model" => model_user,
-            "year_from" => year_from_user,
-            "year_to" => year_to_user,
-            "price_from" => price_from_user, 
-            "price_to" => price_to_user,
-            "sort_by" => sort_by,
-            "sort_direction" => sort_direction
-        }
-
+  def read_user_input(prompts_by_field)
+    prompts_by_field.each_with_object({}) do |(field_name, prompt_text), user_input|
+      puts prompt_text
+      user_input[field_name.to_s] = gets.strip
     end
+  end
 end
