@@ -1,1 +1,3 @@
-puts "Hello world!"
+require_relative 'main'
+
+Main.run

@@ -1,0 +1,4 @@
+require_relative 'utils/input'
+require_relative 'services/car_repository'
+require_relative 'services/search_engine'
+require_relative 'services/sorter'
