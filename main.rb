@@ -1,4 +1,6 @@
 
+require_relative 'autoload'
+
 # Main program file
 class Main
     def self.run
@@ -10,7 +12,7 @@ class Main
       filtered = SearchEngine.new.filter(cars, params)
       sorted = Sorter.new.sort(filtered, params)
 
-      history = SearchHistory.new('searches.yml')
+      history = SearchHistory.new
       history.save_search(params, sorted.length)
 
       puts "-----------------------------------"

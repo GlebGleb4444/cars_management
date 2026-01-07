@@ -3,9 +3,11 @@ require 'yaml'
 class SearchHistory
     attr_reader :data
 
-    def initialize(path)
+    DB_PATH = File.expand_path('../searches.yml', __dir__).freeze
+
+    def initialize(path: DB_PATH)
         @path = path
-        @data = File.exist?(path) ? YAML.load_file(path) : []
+        @data = File.exist?(path) ? YAML.safe_load(File.read(path), permitted_classes: [], aliases: true) : []
     end
 
     def save_search(params, total_results)
