@@ -14,7 +14,7 @@
 
 4. Switch to the feature branch:
     ```bash
-    git checkout feature/task-1-add-search-engine
+    git checkout feature/task-2-add-total-requests-logic
     ```
 
 5. Run the application:
