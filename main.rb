@@ -16,6 +16,6 @@ class Main
     history = SearchHistory.new
     history.save_search(params, sorted.length)
 
-    ResultRenderer.show_search_results(sorted, history, params)
+    ResultRenderer.show_search_results(sorted: sorted, history:history, params:params)
   end
 end

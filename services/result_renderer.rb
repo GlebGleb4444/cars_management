@@ -2,7 +2,7 @@
 
 # Handles displaying car search results and statistics
 class ResultRenderer
-  def self.show_search_results(sorted, history, params)
+  def self.show_search_results(sorted:, history:, params:)
     puts '-----------------------------------'
     puts 'Statistic:'
     puts "Total Quantity: #{sorted.size}"
