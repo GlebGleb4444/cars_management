@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Service to sort a list of cars based on given parameters.
 
 require 'date'
