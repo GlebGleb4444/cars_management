@@ -1,5 +1,6 @@
-# A simple search engine for filtering cars based on various parameters.
+# frozen_string_literal: true
 
+# A simple search engine for filtering cars based on various parameters.
 class SearchEngine
   def filter(cars, params)
     cars.select do |car|

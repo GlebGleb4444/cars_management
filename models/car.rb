@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Car model to represent a car listing
 
 class Car
