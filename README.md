@@ -12,14 +12,9 @@
     cd cars_management
     ```
 
-4. Switch to the feature branch:
-    ```bash
-    git checkout feature/task-2-add-total-requests-logic
-    ```
-
-5. Run the application:
+4. Run the application:
     ```bash
     ruby index.rb
     ```
 
-6. Follow the prompts in the console to search and sort cars.
+5. Follow the prompts in the console to search and sort cars.
