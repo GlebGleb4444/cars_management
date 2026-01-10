@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'i18n'
+require 'colorize'
+require 'terminal-table'
+
 require_relative 'utils/input'
 require_relative 'services/car_repository'
 require_relative 'services/search_engine'

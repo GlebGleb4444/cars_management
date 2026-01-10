@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # gem "rails"
-gem "terminal-table"
-gem "i18n"
-gem "colorize"
+gem 'colorize'
+gem 'i18n'
+gem 'terminal-table'

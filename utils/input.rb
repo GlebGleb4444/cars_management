@@ -4,41 +4,40 @@
 
 class Input
   def ask_user_for_search_params
-        
-    puts I18n.t("input.make")
+    puts I18n.t('input.make')
     make_user = gets.strip
 
-    puts I18n.t("input.model")
+    puts I18n.t('input.model')
     model_user = gets.strip
 
-    puts I18n.t("input.year_from")
+    puts I18n.t('input.year_from')
     year_from_user = gets.strip
 
-    puts I18n.t("input.year_to")
+    puts I18n.t('input.year_to')
     year_to_user = gets.strip
 
-    puts I18n.t("input.price_from")
+    puts I18n.t('input.price_from')
     price_from_user = gets.strip
 
-    puts I18n.t("input.price_to")
+    puts I18n.t('input.price_to')
     price_to_user = gets.strip
 
-    puts I18n.t("input.sort_by")
+    puts I18n.t('input.sort_by')
     sort_by = gets.strip
 
-    puts I18n.t("input.sort_direction")
+    puts I18n.t('input.sort_direction')
     sort_direction = gets.strip
 
     # Car user input hash
     {
-        "make" => make_user,
-        "model" => model_user,
-        "year_from" => year_from_user,
-        "year_to" => year_to_user,
-        "price_from" => price_from_user, 
-        "price_to" => price_to_user,
-        "sort_by" => sort_by,
-        "sort_direction" => sort_direction
+      'make' => make_user,
+      'model' => model_user,
+      'year_from' => year_from_user,
+      'year_to' => year_to_user,
+      'price_from' => price_from_user,
+      'price_to' => price_to_user,
+      'sort_by' => sort_by,
+      'sort_direction' => sort_direction
     }
   end
 
