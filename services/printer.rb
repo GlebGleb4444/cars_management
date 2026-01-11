@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Handles displaying car search results and statistics
-class ResultRenderer
+class Printer
   def display_statistics(sorted, existing)
     # Display statistics
     stats_rows = [
