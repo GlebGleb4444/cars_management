@@ -4,21 +4,21 @@
 
 class Input
   SEARCH_FIELD_PROMPTS = {
-    make: 'Please choose make:',
-    model: 'Please choose model:',
-    year_from: 'Please choose year_from:',
-    year_to: 'Please choose year_to:',
-    price_from: 'Please choose price_from:',
-    price_to: 'Please choose price_to:'
+    make: 'input.make',
+    model: 'input.model',
+    year_from: 'input.year_from',
+    year_to: 'input.year_to',
+    price_from: 'input.price_from',
+    price_to: 'input.price_to'
   }.freeze
 
   SORT_OPTION_PROMPTS = {
-    sort_by: 'Please choose sort option (date_added|price):',
-    sort_direction: 'Please choose sort direction(desc|asc):'
+    sort_by: 'input.sort_by',
+    sort_direction: 'input.sort_direction'
   }.freeze
 
   def call
-    puts 'Please select search rules.'
+    puts I18n.t('input.select_rules')
 
     search_params = read_user_input(SEARCH_FIELD_PROMPTS)
     sort_params = read_user_input(SORT_OPTION_PROMPTS)
@@ -29,8 +29,8 @@ class Input
   private
 
   def read_user_input(prompts_by_field)
-    prompts_by_field.each_with_object({}) do |(field_name, prompt_text), user_input|
-      puts prompt_text
+    prompts_by_field.each_with_object({}) do |(field_name, i18n_key), user_input|
+      puts I18n.t(i18n_key)
       user_input[field_name.to_s] = gets.strip
     end
   end

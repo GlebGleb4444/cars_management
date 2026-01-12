@@ -5,6 +5,8 @@ require_relative 'autoload'
 # Main program file
 class Main
   def self.run
+    LanguageSelector.call
+
     repo = CarRepository.new
 
     params = Input.new.call
@@ -16,6 +18,10 @@ class Main
     history = SearchHistory.new
     history.save_search(params, sorted.length)
 
-    ResultRenderer.show_search_results(sorted: sorted, history:history, params:params)
+    existed_entries = history.find_entry(params)
+
+    renderer = Printer.new
+    renderer.display_statistics(sorted, existed_entries)
+    renderer.display_results(sorted)
   end
 end
