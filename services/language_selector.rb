@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Handles language selection for the application
 class LanguageSelector
   LOCALE_MAP = {
     '1' => :en,
