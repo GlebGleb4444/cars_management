@@ -17,13 +17,48 @@ class Car
 
   def to_table_row(index)
     [
-      (index + 1).to_s.light_blue,
-      id.to_s.light_blue,
-      make.yellow,
-      model.yellow,
-      year.to_s.green,
-      odometer.to_s,
-      price.to_s.green,
-      date_added.to_s.red
+      format_index(index),
+      format_id,
+      format_make,
+      format_model,
+      format_year,
+      format_odometer,
+      format_price,
+      format_date_added
     ]
   end
+
+  private
+
+  def format_index(index)
+    (index + 1).to_s.light_blue
+  end
+
+  def format_id
+    id.to_s.light_blue
+  end
+
+  def format_make
+    make.yellow
+  end
+
+  def format_model
+    model.yellow
+  end
+
+  def format_year
+    year.to_s.green
+  end
+
+  def format_odometer
+    odometer.to_s
+  end
+
+  def format_price
+    price.to_s.green
+  end
+
+  def format_date_added
+    date_added.to_s.red
+  end
+end

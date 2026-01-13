@@ -2,6 +2,7 @@
 
 require 'yaml'
 
+# Service to manage search history stored in a YAML file.
 class SearchHistory
   attr_reader :data
 
@@ -16,14 +17,9 @@ class SearchHistory
     entry_exists = @data.find { |entry| equal_search?(entry, params) }
 
     if entry_exists
-      entry_exists['requests_quantity'] += 1
-      entry_exists['total_results'] = total_results
+      update_entry(entry_exists, total_results)
     else
-      new_entry = params.merge(
-        'total_results' => total_results,
-        'requests_quantity' => 1
-      )
-      @data << new_entry
+      add_new_entry(params, total_results)
     end
 
     save_data
@@ -43,5 +39,18 @@ class SearchHistory
     %w[make model min_price max_price min_year max_year].all? do |key|
       entry[key] == params[key]
     end
+  end
+
+  def update_entry(entry, total_results)
+    entry['requests_quantity'] += 1
+    entry['total_results'] = total_results
+  end
+
+  def add_new_entry(params, total_results)
+    new_entry = params.merge(
+      'total_results' => total_results,
+      'requests_quantity' => 1
+    )
+    @data << new_entry
   end
 end
