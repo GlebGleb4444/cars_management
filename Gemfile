@@ -2,8 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'i18n'
 gem 'colorize'
+gem 'i18n'
 gem 'terminal-table'
 
 gem 'rubocop', require: false
