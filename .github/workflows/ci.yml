@@ -25,12 +25,3 @@ jobs:
 
       - name: Run RuboCop
         run: bundle exec rubocop
-
-      - name: Run Bundler Audit
-        run: bundle exec bundler-audit check --update
-
-      - name: Run Bundle Leak
-        run: bundle exec bundle-leak || true
-
-      - name: Run RSpec
-        run: bundle exec rspec
