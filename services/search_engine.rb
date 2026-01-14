@@ -13,11 +13,11 @@ class SearchEngine
 
   private
 
-  def filter_by(value, query)
+  def filter_by?(value, query)
     query.empty? || value.downcase == query.downcase
   end
 
-  def filter_range(value, from, to)
+  def filter_range?(value, from, to)
     (from.empty? || value.to_i >= from.to_i) &&
       (to.empty? || value.to_i <= to.to_i)
   end

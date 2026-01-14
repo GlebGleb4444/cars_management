@@ -10,7 +10,7 @@ class SearchHistory
 
   def initialize(path: DB_PATH)
     @path = path
-    @data = File.exist?(path) ? YAML.safe_load(File.read(path), permitted_classes: [], aliases: true) : []
+    @data = File.exist?(path) ? YAML.safe_load_file(path, permitted_classes: [], aliases: true) : []
   end
 
   def save_search(params, total_results)
@@ -32,7 +32,7 @@ class SearchHistory
   private
 
   def save_data
-    File.open(@path, 'w') { |f| f.write(YAML.dump(@data)) }
+    File.write(@path, YAML.dump(@data))
   end
 
   def equal_search?(entry, params)
