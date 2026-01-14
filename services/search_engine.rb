@@ -4,10 +4,10 @@
 class SearchEngine
   def filter(cars, params)
     cars.select do |car|
-      filter_by(car.make, params['make']) &&
-        filter_by(car.model, params['model']) &&
-        filter_range(car.year, params['year_from'], params['year_to']) &&
-        filter_range(car.price, params['price_from'], params['price_to'])
+      filter_by?(car.make, params['make']) &&
+        filter_by?(car.model, params['model']) &&
+        filter_range?(car.year, params['year_from'], params['year_to']) &&
+        filter_range?(car.price, params['price_from'], params['price_to'])
     end
   end
 
