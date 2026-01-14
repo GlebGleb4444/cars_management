@@ -2,11 +2,10 @@ pre-commit:
   parallel: true
   jobs:
     - name: rubocop
-      glob: "**/*.rb"
-      run: bundle exec rubocop --force-exclusion {staged_files}
+      run: bundle exec rubocop --force-exclusion --format simple
 
 pre-push:
   parallel: true
   jobs:
     - name: rubocop
-      run: bundle exec rubocop
+      run: bundle exec rubocop --force-exclusion --format simple
