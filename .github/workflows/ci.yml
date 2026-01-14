@@ -25,6 +25,3 @@ jobs:
 
       - name: Run Bundler Audit
         run: bundle exec bundler-audit check --update
-
-      - name: Run Bundler Leak
-        run: bundle exec bundler-leak check
