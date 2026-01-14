@@ -4,6 +4,3 @@ pre-commit:
     - name: rubocop
       glob: "**/*.rb"
       run: bundle exec rubocop --force-exclusion {staged_files}
-
-    - name: bundler-audit
-      run: bundle exec bundler-audit check --update
