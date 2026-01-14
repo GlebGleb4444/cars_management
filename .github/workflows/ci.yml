@@ -2,9 +2,9 @@ name: Ruby CI
 
 on:
   push:
-    branches: [ '**' ]
+    branches: ['**']
   pull_request:
-    branches: [ '**' ]
+    branches: ['**']
 
 jobs:
   build:
@@ -12,16 +12,19 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4.7
+          ruby-version: 3.4
           bundler-cache: true
 
-      - name: Install dependencies
-        run: bundle install
-
       - name: Run RuboCop
-        run: bundle exec rubocop
+        run: bundle exec rubocop --force-exclusion --format simple
+
+      - name: Run Bundler Audit
+        run: bundle exec bundler-audit check --update
+
+      - name: Run Bundler Leak
+        run: bundle exec bundler-leak check

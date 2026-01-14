@@ -4,8 +4,20 @@ pre-commit:
     - name: rubocop
       run: bundle exec rubocop --force-exclusion --format simple
 
+    - name: bundler-audit
+      run: bundle exec bundler-audit check --update
+
+    - name: bundler-leak
+      run: bundle exec bundler-leak check
+
 pre-push:
   parallel: true
   jobs:
     - name: rubocop
       run: bundle exec rubocop --force-exclusion --format simple
+
+    - name: bundler-audit
+      run: bundle exec bundler-audit check --update
+
+    - name: bundler-leak
+      run: bundle exec bundler-leak check
