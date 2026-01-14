@@ -12,9 +12,15 @@
     cd cars_management
     ```
 
-4. Run the application:
+4. Install dependencies and set up Git hooks:
+    ```bash
+    bundle install
+    bundle exec lefthook install
+    ```
+
+5. Run the application:
     ```bash
     ruby index.rb
     ```
 
-5. Follow the prompts in the console to search and sort cars.
+6. Follow the prompts in the console to search and sort cars.
