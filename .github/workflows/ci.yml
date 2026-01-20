@@ -7,7 +7,7 @@ on:
     branches: ['**']
 
 jobs:
-  build:
+  lintering:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,9 +17,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4
+          ruby-version: '3.4.7'
           bundler-cache: true
-
+    
       - name: Run RuboCop
         run: bundle exec rubocop --force-exclusion --format simple
 

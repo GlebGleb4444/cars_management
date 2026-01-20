@@ -4,7 +4,7 @@ plugins:
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.4.7
   NewCops: enable
 
 Lint/MissingSuper:
@@ -45,5 +45,4 @@ Layout/ClassStructure:
       - public_class_methods
       - initializer
       - public_methods
-      - protected_methods
       - private_methods

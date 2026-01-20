@@ -3,7 +3,6 @@
 # Handles displaying car search results and statistics
 class Printer
   def display_statistics(sorted, existing)
-    # Display statistics
     stats_rows = [
       [I18n.t('app.total_quantity'), sorted.size.to_s.green],
       [I18n.t('app.requests_quantity'), existing ? existing['requests_quantity'].to_s.yellow : '0'.red]
@@ -18,7 +17,6 @@ class Printer
   end
 
   def display_results(sorted)
-    # Display sorted cars
     rows = sorted.each_with_index.map { |car, i| car.to_table_row(i) }
 
     table = Terminal::Table.new(

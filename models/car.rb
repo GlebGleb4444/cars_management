@@ -17,48 +17,20 @@ class Car
 
   def to_table_row(index)
     [
-      format_index(index),
-      format_id,
-      format_make,
-      format_model,
-      format_year,
-      format_odometer,
-      format_price,
-      format_date_added
+      colorize(index + 1, :light_blue),
+      colorize(id, :light_blue),
+      colorize(make, :yellow),
+      colorize(model, :yellow),
+      colorize(year, :green),
+      odometer.to_s,
+      colorize(price, :green),
+      colorize(date_added, :red)
     ]
   end
 
   private
 
-  def format_index(index)
-    (index + 1).to_s.light_blue
-  end
-
-  def format_id
-    id.to_s.light_blue
-  end
-
-  def format_make
-    make.yellow
-  end
-
-  def format_model
-    model.yellow
-  end
-
-  def format_year
-    year.to_s.green
-  end
-
-  def format_odometer
-    odometer.to_s
-  end
-
-  def format_price
-    price.to_s.green
-  end
-
-  def format_date_added
-    date_added.to_s.red
+  def colorize(value, color)
+    value.to_s.public_send(color)
   end
 end
