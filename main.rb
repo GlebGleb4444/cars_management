@@ -14,9 +14,8 @@ class Main
   end
 
   def perform_search_cycle
-    cars = load_data
     params = user_input
-    sorted = filter_and_sort_cars(cars, params)
+    sorted = filter_and_sort_cars(load_data, params)
     existed_entries = save_search_history(params, sorted)
     display_results_and_stats(sorted, existed_entries)
   end
