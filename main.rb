@@ -10,6 +10,10 @@ class Main
 
   def run
     LanguageSelector.call
+    perform_search_cycle
+  end
+
+  def perform_search_cycle
     cars = load_data
     params = user_input
     sorted = filter_and_sort_cars(cars, params)

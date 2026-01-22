@@ -7,15 +7,9 @@ AllCops:
   TargetRubyVersion: 3.4.7
   NewCops: enable
 
-Lint/MissingSuper:
-  Enabled: false
-
 # Style -----------------------------------------------------------------------
 
 Style/Documentation:
-  Enabled: false
-
-Style/ParallelAssignment:
   Enabled: false
 
 Style/RegexpLiteral:
@@ -40,9 +34,9 @@ Layout/ClassStructure:
       - prepend
       - extend
   ExpectedOrder:
-      - module_inclusion
-      - constants
-      - public_class_methods
-      - initializer
-      - public_methods
-      - private_methods
+    - module_inclusion
+    - constants
+    - public_class_methods
+    - initializer
+    - public_methods
+    - private_methods
