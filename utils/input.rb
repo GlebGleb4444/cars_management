@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # This class collects user input and builds a hash of car search parameters.
-
 class Input
   SEARCH_FIELD_PROMPTS = {
     make: 'input.make',

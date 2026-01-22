@@ -7,14 +7,15 @@ en:
     search_results: "Search Results"
 
   input:
-    make: "Enter car make:"
-    model: "Enter car model:"
-    year_from: "Enter car year from:"
-    year_to: "Enter car year to:"
-    price_from: "Enter car price from:"
-    price_to: "Enter car price to:"
-    sort_by: "How to sort results? (enter 'price', 'date_added' or leave blank for no sorting):"
-    sort_direction: "Direction? (enter 'asc', 'desc' or leave blank for no sorting):"
+    select_rules: "Please select search rules."
+    make: "Please choose make:"
+    model: "Please choose model:"
+    year_from: "Please choose year_from:"
+    year_to: "Please choose year_to:"
+    price_from: "Please choose price_from:"
+    price_to: "Please choose price_to:"
+    sort_by: "Please choose sort option (enter 'price', 'date_added' or leave blank for no sorting):"
+    sort_direction: "Please choose sort direction (enter 'asc', 'desc' or leave blank for no sorting):"
   
   table:
     number: "№"

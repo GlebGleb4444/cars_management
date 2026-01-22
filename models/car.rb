@@ -17,14 +17,20 @@ class Car
 
   def to_table_row(index)
     [
-      (index + 1).to_s.light_blue,
-      id.to_s.light_blue,
-      make.yellow,
-      model.yellow,
-      year.to_s.green,
+      colorize(index + 1, :light_blue),
+      colorize(id, :light_blue),
+      colorize(make, :yellow),
+      colorize(model, :yellow),
+      colorize(year, :green),
       odometer.to_s,
-      price.to_s.green,
-      date_added.to_s.red
+      colorize(price, :green),
+      colorize(date_added, :red)
     ]
+  end
+
+  private
+
+  def colorize(value, color)
+    value.to_s.public_send(color)
   end
 end
