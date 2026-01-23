@@ -13,6 +13,12 @@ en:
     invalid_option: "Invalid menu option. Please try again."
     exit_message: "Goodbye! Thanks for using the application."
 
+    enter_email: "Please enter your email:"
+    enter_password: "Please enter your password:"
+
+    hello: "Hello, %{email}!"
+    goodbye: "Goodbye, %{email}!"
+
     help_text: |
       Available options:
       • Search a car — filter and sort cars
@@ -24,6 +30,9 @@ en:
       show_all: "Show all cars"
       help: "Help"
       exit: "Exit"
+      login: "Login"
+      logout: "Logout"
+      signup: "Sign up"
 
   input:
     select_rules: "Please select search rules."
@@ -45,3 +54,15 @@ en:
     odometer: "Odometer"
     price: "Price"
     date_added: "Date added"
+
+  errors:
+    auth:
+      invalid_credentials: "Invalid email or password"
+      signup_failed: "Failed to create a new user"
+    email:
+      invalid_format: "Invalid email format or less than 5 characters before @"
+      already_exists: "User with this email already exists"
+    password:
+      length: "Password must be 8-20 characters long"
+      uppercase: "Password must contain at least 1 capital letter"
+      special_chars: "Password must contain at least 2 special characters"

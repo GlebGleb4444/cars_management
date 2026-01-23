@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'colorize'
 gem 'i18n'
 gem 'terminal-table'
+gem 'bcrypt'
 
 gem 'rubocop', require: false
 gem 'rubocop-md', require: false

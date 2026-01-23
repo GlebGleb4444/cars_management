@@ -10,7 +10,7 @@ class Main
 
   def run
     LanguageSelector.call
-    menu
+    menu(self, auth)
   end
 
   def run_search
@@ -24,6 +24,10 @@ class Main
 
   private
 
+  def auth
+    AuthService.new
+  end
+
   def perform_search_cycle
     params = user_input
     sorted = filter_and_sort_cars(params)
@@ -31,8 +35,8 @@ class Main
     display_results_and_stats(sorted, existed_entries)
   end
 
-  def menu
-    Menu.new(self).start
+  def menu(main, auth)
+    Menu.new(main, auth).start
   end
 
   def load_data
