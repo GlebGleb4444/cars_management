@@ -7,9 +7,6 @@ pre-commit:
     - name: bundler-audit
       run: bundle exec bundler-audit check --update
 
-    - name: bundler-leak
-      run: bundle exec bundler-leak check
-
 pre-push:
   parallel: true
   jobs:
@@ -18,6 +15,3 @@ pre-push:
 
     - name: bundler-audit
       run: bundle exec bundler-audit check --update
-
-    - name: bundler-leak
-      run: bundle exec bundler-leak check

@@ -1,22 +1,41 @@
 en:
   app:
     choose_language: "Choose language: 1) English 2) Ukrainian"
+
+    welcome_message: "Welcome to the car search system"
+    main_menu: "Main menu"
+
     statistics: "Statistics"
-    total_quantity: "Total Quantity"
-    requests_quantity: "Requests Quantity"
-    search_results: "Search Results"
+    total_quantity: "Total quantity"
+    requests_quantity: "Requests quantity"
+    search_results: "Search results"
+
+    invalid_option: "Invalid menu option. Please try again."
+    exit_message: "Goodbye! Thanks for using the application."
+
+    help_text: |
+      Available options:
+      • Search a car — filter and sort cars
+      • Show all cars — display all cars
+      • Exit — close the application
+
+    menu:
+      search_car: "Search a car"
+      show_all: "Show all cars"
+      help: "Help"
+      exit: "Exit"
 
   input:
     select_rules: "Please select search rules."
     make: "Please choose make:"
     model: "Please choose model:"
-    year_from: "Please choose year_from:"
-    year_to: "Please choose year_to:"
-    price_from: "Please choose price_from:"
-    price_to: "Please choose price_to:"
-    sort_by: "Please choose sort option (enter 'price', 'date_added' or leave blank for no sorting):"
-    sort_direction: "Please choose sort direction (enter 'asc', 'desc' or leave blank for no sorting):"
-  
+    year_from: "Please choose year from:"
+    year_to: "Please choose year to:"
+    price_from: "Please choose price from:"
+    price_to: "Please choose price to:"
+    sort_by: "Choose sorting field (price, date_added or leave blank):"
+    sort_direction: "Choose sorting direction (asc, desc or leave blank):"
+
   table:
     number: "№"
     id: "ID"
@@ -25,4 +44,4 @@ en:
     year: "Year"
     odometer: "Odometer"
     price: "Price"
-    date_added: "Date Added"
+    date_added: "Date added"

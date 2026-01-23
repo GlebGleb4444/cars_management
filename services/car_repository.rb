@@ -3,7 +3,7 @@
 require 'yaml'
 require_relative '../models/car'
 
-# A repository class to load car data from a YAML file
+# Loads car data from YAML
 class CarRepository
   DB_PATH = File.expand_path('../db.yml', __dir__).freeze
 
