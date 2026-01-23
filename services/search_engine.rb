@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A simple search engine for filtering cars based on various parameters.
+# Loads car data from YAML
 class SearchEngine
   def filter(cars, params)
     cars.select do |car|

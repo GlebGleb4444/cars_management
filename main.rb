@@ -10,17 +10,30 @@ class Main
 
   def run
     LanguageSelector.call
+    menu
+  end
+
+  def run_search
     perform_search_cycle
   end
 
+  def show_all_cars
+    renderer = Printer.new
+    renderer.display_results(load_data)
+  end
+
+  private
+
   def perform_search_cycle
     params = user_input
-    sorted = filter_and_sort_cars(load_data, params)
+    sorted = filter_and_sort_cars(params)
     existed_entries = save_search_history(params, sorted)
     display_results_and_stats(sorted, existed_entries)
   end
 
-  private
+  def menu
+    Menu.new(self).start
+  end
 
   def load_data
     CarRepository.new.all
@@ -30,8 +43,8 @@ class Main
     Input.new.call
   end
 
-  def filter_and_sort_cars(cars, params)
-    filtered = SearchEngine.new.filter(cars, params)
+  def filter_and_sort_cars(params)
+    filtered = SearchEngine.new.filter(load_data, params)
     Sorter.new.sort(filtered, params)
   end
 
