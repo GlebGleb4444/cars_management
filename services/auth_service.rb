@@ -27,11 +27,11 @@ class AuthService
   end
 
   def signup(email, password)
-    email_error = EmailValidator.validate!(email)
-    return email_error if email_error
+    email_result = EmailValidator.validate!(email)
+    return email_result unless email_result == true
 
-    password_error = PasswordValidator.valid!(password)
-    return password_error if password_error
+    password_result = PasswordValidator.valid!(password)
+    return password_result unless password_result == true
 
     password_hash = BCrypt::Password.create(password)
     user = User.new(email: email, password_hash: password_hash)

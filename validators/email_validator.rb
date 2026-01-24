@@ -8,6 +8,6 @@ class EmailValidator
     return I18n.t('errors.email.invalid_format') unless EMAIL_REGEX.match?(email)
     return I18n.t('errors.email.already_exists') if User.find_by_email(email)
 
-    nil
+    true
   end
 end
