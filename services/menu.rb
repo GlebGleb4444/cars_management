@@ -68,7 +68,7 @@ class Menu
 
   def handle_logged_in_user(choice)
     case choice
-    when '1', 'search', 'search a car' then @main_program.perform_search_cycle
+    when '1', 'search', 'search a car' then @main_program.run_search
     when '2', 'show', 'show all cars' then @main_program.show_all_cars
     when '3', 'help' then display_help
     when '4', 'logout', 'out' then logout
