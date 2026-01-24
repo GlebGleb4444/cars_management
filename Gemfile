@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'bcrypt'
 gem 'colorize'
 gem 'i18n'
 gem 'terminal-table'
