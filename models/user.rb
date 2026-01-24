@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'bcrypt'
-require 'yaml'
-
 # Represents a user of the system with email and password attributes.
 class User
   USERS_FILE = File.expand_path('../users.yml', __dir__).freeze

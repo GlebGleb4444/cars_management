@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-require 'bcrypt'
-
-require_relative '../models/user'
-require_relative '../validators/email_validator'
-require_relative '../validators/password_validator'
-
 # Handles user authentication and registration logic.
 class AuthService
   attr_reader :current_user
