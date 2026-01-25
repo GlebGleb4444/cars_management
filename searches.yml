@@ -1,11 +1,1 @@
----
-- make: ''
-  model: ''
-  year_from: ''
-  year_to: ''
-  price_from: ''
-  price_to: ''
-  sort_by: ''
-  sort_direction: ''
-  total_results: 0
-  requests_quantity: 1
+[]
