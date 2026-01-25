@@ -41,16 +41,23 @@ class Menu
   end
 
   def display_options
+    display_common_options
+    @auth.logged_in? ? display_user_options : display_guest_options
+  end
+
+  def display_common_options
     puts "1. #{I18n.t('app.menu.search_car')}"
-    puts "2. #{I18n.t('app.menu.show_all')}"
-    puts "3. #{I18n.t('app.menu.help')}"
-    if @auth.logged_in?
-      puts "4. #{I18n.t('app.menu.logout')}\n5. #{I18n.t('app.menu.exit')}"
-    else
-      puts "4. #{I18n.t('app.menu.login')}"
-      puts "5. #{I18n.t('app.menu.signup')}"
-      puts "6. #{I18n.t('app.menu.exit')}"
-    end
+    puts "2. #{I18n.t('app.menu.show_all')}\n3. #{I18n.t('app.menu.help')}"
+  end
+
+  def display_user_options
+    puts "4. #{I18n.t('app.menu.my_searches')}"
+    puts "5. #{I18n.t('app.menu.logout')}\n6. #{I18n.t('app.menu.exit')}"
+  end
+
+  def display_guest_options
+    puts "4. #{I18n.t('app.menu.login')}"
+    puts "5. #{I18n.t('app.menu.signup')}\n6. #{I18n.t('app.menu.exit')}"
   end
 
   def handle_guest(choice)
@@ -71,8 +78,9 @@ class Menu
     when '1', 'search', 'search a car' then @main_program.run_search
     when '2', 'show', 'show all cars' then @main_program.show_all_cars
     when '3', 'help' then display_help
-    when '4', 'logout', 'out' then logout
-    when '5', 'exit', 'quit' then exit_program
+    when '4', 'my searches', 'searches' then @main_program.show_my_searches
+    when '5', 'logout', 'out' then logout
+    when '6', 'exit', 'quit' then exit_program
     else
       invalid_option
     end
