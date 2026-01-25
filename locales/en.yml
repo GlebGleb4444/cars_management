@@ -19,6 +19,10 @@ en:
     hello: "Hello, %{email}!"
     goodbye: "Goodbye, %{email}!"
 
+    my_searches: "My searches"
+
+    no_searches: "You have no saved searches yet."
+
     help_text: |
       Available options:
       • Search a car — filter and sort cars
@@ -29,6 +33,7 @@ en:
       search_car: "Search a car"
       show_all: "Show all cars"
       help: "Help"
+      my_searches: "My searches"
       exit: "Exit"
       login: "Login"
       logout: "Logout"

@@ -2,6 +2,19 @@
 
 # Handles displaying car search results and statistics
 class Printer
+  def display_my_searches(searches)
+    if searches.empty?
+      puts I18n.t('app.no_searches').yellow
+    else
+      puts I18n.t('app.my_searches').green
+      searches.each_with_index do |entry, index|
+        params = entry['params']
+        formatted_params = params.map { |k, v| "#{k}: #{v}" }.join(', ')
+        puts "#{index + 1}. #{formatted_params}"
+      end
+    end
+  end
+
   def display_statistics(sorted, existing)
     stats_rows = [
       [I18n.t('app.total_quantity'), sorted.size.to_s.green],
