@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 
 gem 'bcrypt'
 gem 'colorize'
+gem 'ffaker'
 gem 'i18n'
+gem 'rake'
 gem 'terminal-table'
 
 gem 'rubocop', require: false
