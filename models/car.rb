@@ -15,6 +15,19 @@ class Car
     @date_added = car_attr['date_added']
   end
 
+  def to_h
+    {
+      id: @id,
+      make: @make,
+      model: @model,
+      year: @year,
+      odometer: @odometer,
+      price: @price,
+      description: @description,
+      date_added: @date_added
+    }
+  end
+
   def to_table_row(index)
     [
       colorize(index + 1, :light_blue),
