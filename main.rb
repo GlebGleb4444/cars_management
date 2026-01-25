@@ -8,9 +8,14 @@ class Main
     new.run
   end
 
+  def initialize
+    @auth_service = AuthService.new
+    @user_search_history = UserSearchHistory.new
+    @renderer = Printer.new
+  end
+
   def run
     LanguageSelector.call
-    @auth_service = auth
     menu(self, @auth_service)
   end
 
@@ -19,22 +24,15 @@ class Main
   end
 
   def show_all_cars
-    renderer = Printer.new
-    renderer.display_results(load_data)
+    @renderer.display_results(load_data)
   end
 
   def show_my_searches
-    history = UserSearchHistory.new
-    searches = history.searches_for(@auth_service.current_user)
-    renderer = Printer.new
-    renderer.display_my_searches(searches)
+    searches = @user_search_history.searches_for(@auth_service.current_user)
+    @renderer.display_my_searches(searches)
   end
 
   private
-
-  def auth
-    AuthService.new
-  end
 
   def perform_search_cycle
     params = user_input
@@ -68,13 +66,11 @@ class Main
   end
 
   def save_user_search_history(params)
-    history = UserSearchHistory.new
-    history.save_search(@auth_service.current_user, params)
+    @user_search_history.save_search(@auth_service.current_user, params)
   end
 
   def display_results_and_stats(sorted, existed_entries)
-    renderer = Printer.new
-    renderer.display_statistics(sorted, existed_entries)
-    renderer.display_results(sorted)
+    @renderer.display_statistics(sorted, existed_entries)
+    @renderer.display_results(sorted)
   end
 end

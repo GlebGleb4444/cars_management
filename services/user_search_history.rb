@@ -6,7 +6,6 @@ class UserSearchHistory
 
   def initialize(path: DB_PATH)
     @path = path
-
     @data = []
 
     return unless File.exist?(@path)
