@@ -1,1 +1,83 @@
---- []
+---
+- id: 50123b67-453a-4d49-bd5d-3326fe21a72f
+  make: Avanti
+  model: Zephyr
+  year: 2020
+  odometer: 152302
+  price: 17137
+  description: Sapiente maxime voluptates error cum molestias exercitationem mollitia.
+  date_added: 25/01/26
+- id: 433205c4-4099-406f-b85e-8317636a090e
+  make: Nissan
+  model: Escort
+  year: 2022
+  odometer: 141146
+  price: 22155
+  description: Labore quos neque recusandae eum odit aperiam odio rem.
+  date_added: 25/01/26
+- id: 2a3a5f7a-ec1d-4c55-93db-bd0ba9459cf9
+  make: Kia
+  model: Civic
+  year: 2022
+  odometer: 177752
+  price: 34917
+  description: Esse et ipsum quia harum error ullam incidunt.
+  date_added: 25/01/26
+- id: 580e8d8b-f2ab-4454-8146-787c6e15de3d
+  make: AMC
+  model: Grand Prix
+  year: 2008
+  odometer: 107330
+  price: 41730
+  description: Quas at voluptatibus illo necessitatibus quibusdam totam labore.
+  date_added: 25/01/26
+- id: 80f91d51-42bd-426c-9053-fde0ee4a1f62
+  make: Saleen
+  model: LaSabre
+  year: 2018
+  odometer: 188950
+  price: 34820
+  description: Doloribus tenetur dolorum aspernatur praesentium deserunt porro quaerat
+    id.
+  date_added: 25/01/26
+- id: abe624fd-50a7-4d0c-82d3-fb1d05827478
+  make: Morgan
+  model: HHR
+  year: 2011
+  odometer: 105838
+  price: 25600
+  description: Corrupti nisi repellendus tempore aspernatur eos facere deserunt ab.
+  date_added: 25/01/26
+- id: d37fc50f-67a1-400d-b1a7-98c671480da2
+  make: Scion
+  model: Accent
+  year: 2015
+  odometer: 44919
+  price: 31463
+  description: Voluptates autem maxime sint ipsam.
+  date_added: 25/01/26
+- id: 0aa29ec2-f79a-4b65-8c84-f06f09da20fc
+  make: Lodal
+  model: Yukon
+  year: 2013
+  odometer: 54191
+  price: 23563
+  description: Maiores quis et iure hic dolores.
+  date_added: 25/01/26
+- id: faca4ddc-ef41-4235-8b85-3a9217248883
+  make: Daihatsu
+  model: Golf
+  year: 2004
+  odometer: 14730
+  price: 20676
+  description: Nesciunt cupiditate adipisci provident quas cum perspiciatis illum
+    beatae.
+  date_added: 25/01/26
+- id: be813f07-66c9-4aaa-b2c1-966701c258a7
+  make: Freightliner
+  model: Odyssey
+  year: 1995
+  odometer: 41054
+  price: 14884
+  description: Rerum perferendis atque laboriosam ad.
+  date_added: 25/01/26

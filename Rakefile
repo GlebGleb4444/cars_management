@@ -3,7 +3,7 @@
 require_relative 'autoload'
 require_relative 'lib/car_factory'
 
-namespace :db do
+namespace :data_base do
   desc 'Clear the cars database'
   task :clear do
     CarRepository.new.clear
@@ -11,13 +11,13 @@ namespace :db do
   end
 
   desc 'Add one random car'
-  task :add_one do
+  task :add_one_car do
     CarRepository.new.add(CarFactory.random_car)
     puts 'Added 1 car'
   end
 
   desc 'Add multiple random cars: rake db:add_many[10]'
-  task :add_many, [:count] do |_, args|
+  task :add_many_cars, [:count] do |_, args|
     count = [args[:count].to_i, 1].max
     repo = CarRepository.new
     count.times { repo.add(CarFactory.random_car) }

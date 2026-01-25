@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require 'securerandom'
-require 'ffaker'
-require 'date'
-require_relative '../models/car'
+require_relative '../autoload'
 
 class CarFactory
   def self.random_car

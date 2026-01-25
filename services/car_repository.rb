@@ -7,9 +7,8 @@ require_relative '../models/car'
 class CarRepository
   DB_PATH = File.expand_path('../db.yml', __dir__).freeze
 
-  def initialize(path: DB_PATH)
-    @path = path
-    @data = YAML.safe_load_file(path, permitted_classes: [], aliases: true) || []
+  def initialize
+    @data = YAML.safe_load_file(DB_PATH, permitted_classes: [], aliases: true) || []
   end
 
   def all
@@ -29,6 +28,6 @@ class CarRepository
   private
 
   def save!
-    File.write(@path, @data.to_yaml)
+    File.write(DB_PATH, @data.to_yaml)
   end
 end
