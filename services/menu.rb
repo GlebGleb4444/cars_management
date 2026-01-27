@@ -15,81 +15,6 @@ class Menu
     end
   end
 
-  private
-
-  def user_choice
-    display_menu
-    gets.strip.downcase
-  end
-
-  def handle_user_choice(choice)
-    if @auth.logged_in?
-      handle_logged_in_user(choice)
-    else
-      handle_guest(choice)
-    end
-  end
-
-  def display_welcome
-    puts I18n.t('app.welcome_message').green
-  end
-
-  def display_menu
-    puts "\n#{I18n.t('app.main_menu')}".yellow
-    display_options
-    print '> '
-  end
-
-  def display_options
-    display_common_options
-    @auth.logged_in? ? display_user_options : display_guest_options
-  end
-
-  def display_common_options
-    puts "1. #{I18n.t('app.menu.search_car')}"
-    puts "2. #{I18n.t('app.menu.show_all')}\n3. #{I18n.t('app.menu.help')}"
-  end
-
-  def display_user_options
-    puts "4. #{I18n.t('app.menu.my_searches')}"
-    puts "5. #{I18n.t('app.menu.logout')}\n6. #{I18n.t('app.menu.exit')}"
-  end
-
-  def display_guest_options
-    puts "4. #{I18n.t('app.menu.login')}"
-    puts "5. #{I18n.t('app.menu.signup')}\n6. #{I18n.t('app.menu.exit')}"
-  end
-
-  def handle_guest(choice)
-    case choice
-    when '1', 'search', 'search a car' then @main_program.run_search
-    when '2', 'show', 'show all cars' then @main_program.show_all_cars
-    when '3', 'help' then display_help
-    when '4', 'login', 'log' then login
-    when '5', 'signup', 'reg' then signup
-    when '6', 'exit', 'quit' then exit_program
-    else
-      invalid_option
-    end
-  end
-
-  def handle_logged_in_user(choice)
-    case choice
-    when '1', 'search', 'search a car' then @main_program.run_search
-    when '2', 'show', 'show all cars' then @main_program.show_all_cars
-    when '3', 'help' then display_help
-    when '4', 'my searches', 'searches' then @main_program.show_my_searches
-    when '5', 'logout', 'out' then logout
-    when '6', 'exit', 'quit' then exit_program
-    else
-      invalid_option
-    end
-  end
-
-  def display_help
-    puts I18n.t('app.help_text')
-  end
-
   def login
     email, password = prompt_credentials
     puts @auth.login(email, password)
@@ -105,6 +30,53 @@ class Menu
     puts message if message
   end
 
+  def exit_program
+    puts I18n.t('app.exit_message')
+    :exit
+  end
+
+  private
+
+  def display_welcome
+    puts I18n.t('app.welcome_message').green
+  end
+
+  def user_choice
+    display_menu
+    gets.strip.downcase
+  end
+
+  def display_menu
+    puts "\n#{I18n.t('app.main_menu')}".yellow
+    display_options
+    print '> '
+  end
+
+  def display_options
+    if @auth.logged_in?
+      menu = @auth.current_user.admin? ? AdminMenu.new(@main_program, self) : UserMenu.new(@main_program, self)
+      menu.display
+    else
+      GuestMenu.new(@main_program, self).display
+    end
+  end
+
+  def handle_user_choice(choice)
+    if @auth.logged_in?
+      if @auth.current_user.admin?
+        AdminMenu.new(@main_program, self).handle_choice(choice)
+      else
+        UserMenu.new(@main_program, self).handle_choice(choice)
+      end
+    else
+      GuestMenu.new(@main_program, self).handle_choice(choice)
+    end
+  end
+
+  def invalid_option
+    puts I18n.t('app.invalid_option').red
+  end
+
   def prompt_credentials
     print I18n.t('app.enter_email')
     email = gets.strip
@@ -112,13 +84,87 @@ class Menu
     password = gets.strip
     [email, password]
   end
+end
 
-  def exit_program
-    puts I18n.t('app.exit_message')
-    :exit
+class AdminMenu
+  def initialize(main_program, menu)
+    @main_program = main_program
+    @menu = menu
   end
 
-  def invalid_option
-    puts I18n.t('app.invalid_option').red
+  def display
+    puts "1. #{I18n.t('app.menu.create_ad')}"
+    puts "2. #{I18n.t('app.menu.update_ad')}"
+    puts "3. #{I18n.t('app.menu.delete_ad')}"
+    puts "4. #{I18n.t('app.menu.logout')}"
+  end
+
+  def handle_choice(choice)
+    case choice
+    when '1' then @main_program.create_advertisement
+    when '2' then @main_program.update_advertisement
+    when '3' then @main_program.delete_advertisement
+    when '4', 'logout', 'out' then @menu.logout
+    else
+      puts I18n.t('app.invalid_option').red
+    end
+  end
+end
+
+class UserMenu
+  def initialize(main_program, menu)
+    @main_program = main_program
+    @menu = menu
+  end
+
+  def display
+    puts "1. #{I18n.t('app.menu.search_car')}"
+    puts "2. #{I18n.t('app.menu.show_all')}"
+    puts "3. #{I18n.t('app.menu.help')}"
+    puts "4. #{I18n.t('app.menu.my_searches')}"
+    puts "5. #{I18n.t('app.menu.logout')}"
+    puts "6. #{I18n.t('app.menu.exit')}"
+  end
+
+  def handle_choice(choice)
+    case choice
+    when '1', 'search', 'search a car' then @main_program.run_search
+    when '2', 'show', 'show all cars' then @main_program.show_all_cars
+    when '3', 'help' then @menu.display_help
+    when '4', 'my searches', 'searches' then @main_program.show_my_searches
+    when '5', 'logout', 'out' then @menu.logout
+    when '6', 'exit', 'quit' then @menu.exit_program
+    else
+      puts I18n.t('app.invalid_option').red
+    end
+  end
+end
+
+class GuestMenu
+  def initialize(main_program, menu)
+    @main_program = main_program
+    @menu = menu
+  end
+
+  def display
+    puts "1. #{I18n.t('app.menu.search_car')}"
+    puts "2. #{I18n.t('app.menu.show_all')}"
+    puts "3. #{I18n.t('app.menu.help')}"
+    puts "4. #{I18n.t('app.menu.login')}"
+    puts "5. #{I18n.t('app.menu.signup')}"
+    puts "6. #{I18n.t('app.menu.exit')}"
+  end
+
+  def handle_choice(choice)
+    case choice
+    when '1', 'search', 'search a car' then @main_program.run_search
+    when '2', 'show', 'show all cars' then @main_program.show_all_cars
+    when '3', 'help' then @menu.display_help
+    when '4', 'login', 'log' then @menu.login
+    when '5', 'signup', 'reg' then @menu.signup
+    when '6', 'exit', 'quit' then @menu.exit_program
+    else
+      puts I18n.t('app.invalid_option').red
+    end
   end
 end

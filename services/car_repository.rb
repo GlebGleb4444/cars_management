@@ -25,7 +25,34 @@ class CarRepository
     save!
   end
 
+  def update_car?(index, updated_car)
+    cars = all
+    return false unless cars[index]
+
+    cars[index] = updated_car
+    save_all(cars)
+    true
+  end
+
+  def delete_car?(index)
+    cars = all
+    return false unless cars[index]
+
+    cars.delete_at(index)
+    save_all(cars)
+    true
+  end
+
+  def find(index)
+    all[index]
+  end
+
   private
+
+  def save_all(cars)
+    @data = cars.map(&:to_h).map { |h| h.transform_keys(&:to_s) }
+    save!
+  end
 
   def save!
     File.write(DB_PATH, @data.to_yaml)

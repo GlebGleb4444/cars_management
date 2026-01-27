@@ -5,7 +5,7 @@ class User
   USERS_FILE = File.expand_path('../users.yml', __dir__).freeze
 
   attr_accessor :email
-  attr_reader :password_hash
+  attr_reader :password_hash, :admin
 
   def self.all
     return [] unless File.exist?(USERS_FILE)
@@ -17,11 +17,12 @@ class User
     user_data = all.find { |user| user['email'] == email }
     return nil unless user_data
 
-    new(email: user_data['email'], password_hash: user_data['password_hash'])
+    new(email: user_data['email'], password_hash: user_data['password_hash'], admin: user_data['admin'] || false)
   end
 
-  def initialize(email:, password: nil, password_hash: nil)
+  def initialize(email:, password: nil, password_hash: nil, admin: false)
     @email = email
+    @admin = admin
 
     if password
       @password_hash = BCrypt::Password.create(password)
@@ -34,12 +35,16 @@ class User
 
   def save?
     users = self.class.all
-    users << { 'email' => email, 'password_hash' => password_hash.to_s }
+    users << { 'email' => email, 'password_hash' => password_hash.to_s, 'admin' => @admin }
     File.write(USERS_FILE, users.to_yaml)
     true
   end
 
   def authenticate?(password)
     BCrypt::Password.new(password_hash) == password
+  end
+
+  def admin?
+    @admin
   end
 end

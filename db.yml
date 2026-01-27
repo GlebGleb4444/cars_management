@@ -1,1 +1,41 @@
-[]
+---
+- id: 23e0f457-6141-4987-bf36-d156990ecde0
+  make: Toyota
+  model: Supra
+  year: 2004
+  odometer: 30000
+  price: 100000
+  description: 2JZ!!!!!!!!!!!
+  date_added: 27/01/26
+- id: 4ddac43d-60af-4607-9c65-2d754cb37a8b
+  make: RedBull
+  model: RB22
+  year: 2026
+  odometer: 0
+  price: 1000000
+  description: MAX VERSTAPPEN
+  date_added: 27/01/26
+- id: 58304af0-0537-4d6f-964d-b2fa682f1987
+  make: Toyota
+  model: AE86
+  year: 1986
+  odometer: 30000
+  price: 100000
+  description: Legend
+  date_added: 27/01/26
+- id: b6f4c25c-fd7c-483c-ac52-c10875717d2d
+  make: McLaren
+  model: P1
+  year: 2013
+  odometer: 0
+  price: 1000000
+  description: Orange
+  date_added: 27/01/26
+- id: a8ebdac7-66df-496a-b61b-e2ad59134cac
+  make: Honda
+  model: Civic
+  year: 1993
+  odometer: 30000
+  price: 100000
+  description: Cool
+  date_added: 27/01/26

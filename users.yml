@@ -1,0 +1,4 @@
+---
+- email: admin@gmail.com
+  password_hash: "$2a$12$wOildbe.PnjRoTBO21BrWOWZcnAUXj28wg5Qvpboxa2RHWLe05o2y"
+  admin: true
