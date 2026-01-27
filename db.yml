@@ -31,11 +31,11 @@
   price: 1000000
   description: Orange
   date_added: 27/01/26
-- id: a8ebdac7-66df-496a-b61b-e2ad59134cac
-  make: Honda
-  model: Civic
-  year: 1993
-  odometer: 30000
-  price: 100000
+- id: 9967e9ff-3c03-49f0-8c94-32de012b8cb5
+  make: Mazda
+  model: Mazda5
+  year: 2005
+  odometer: 100000
+  price: 15000
   description: Cool
   date_added: 27/01/26

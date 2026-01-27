@@ -83,24 +83,29 @@ en:
           min_length: "Make must have at least %{min} symbols"
           max_length: "Make must have at most %{max} symbols"
           only_letters: "Make must contain only English letters"
+
         model:
           required: "Model is required"
           min_length: "Model must have at least %{min} symbols"
           max_length: "Model must have at most %{max} symbols"
-          only_letters: "Model must contain only English letters"
+          only_letters_or_digits: "Model must contain only English letters or digits"
+
         year:
           required: "Year is required"
           integer: "Year must be an integer"
           min: "Year must be >= %{min}"
           max: "Year cannot be greater than current year"
+
         odometer:
           required: "Odometer is required"
           integer: "Odometer must be an integer"
           min: "Odometer must be >= %{min}"
+
         price:
           required: "Price is required"
           integer: "Price must be an integer"
           min: "Price must be >= %{min}"
+
         description:
           string: "Description must be a string"
           max_length: "Description cannot exceed %{max} symbols"
@@ -116,4 +121,4 @@ en:
     password:
       length: "Password must be 8-20 characters long"
       uppercase: "Password must contain at least 1 capital letter"
-      special_chars: "Password must contain at least 2 special characters"
+      special_character: "Password must contain at least 2 special characters"
