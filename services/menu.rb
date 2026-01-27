@@ -35,6 +35,10 @@ class Menu
     :exit
   end
 
+  def display_help
+    puts I18n.t('app.help_text')
+  end
+
   private
 
   def display_welcome
