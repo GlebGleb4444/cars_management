@@ -12,33 +12,34 @@ class CarFactory
     description: 'input.description'
   }.freeze
 
-  def self.random_car
-    Car.new(
-      'id' => SecureRandom.uuid,
-      'make' => FFaker::Vehicle.make,
-      'model' => FFaker::Vehicle.model,
-      'year' => rand(1995..2024),
-      'odometer' => rand(0..200_000),
-      'price' => rand(3_000..50_000),
-      'description' => FFaker::Lorem.sentence,
-      'date_added' => Date.today.strftime('%d/%m/%y')
-    )
-  end
+  class << self
 
-  def self.build_from_input(existing_car = nil)
-    puts "\n#{existing_car ? 'Updating existing car:' : 'Creating new car:'}".yellow
-
-    attributes = CAR_FIELD_PROMPTS.each_with_object({}) do |(field, i18n_key), result|
-      value = ask_field(field, i18n_key, existing_car)
-      return nil if value == :exit
-
-      result[field.to_s] = value
+    def random_car
+      Car.new(
+        'id' => SecureRandom.uuid,
+        'make' => FFaker::Vehicle.make,
+        'model' => FFaker::Vehicle.model,
+        'year' => rand(1995..2024),
+        'odometer' => rand(0..200_000),
+        'price' => rand(3_000..50_000),
+        'description' => FFaker::Lorem.sentence,
+        'date_added' => Date.today.strftime('%d/%m/%y')
+      )
     end
 
-    build_car(attributes, existing_car)
-  end
+    def build_from_input(existing_car = nil)
+      puts "\n#{existing_car ? 'Updating existing car:' : 'Creating new car:'}".yellow
 
-  class << self
+      attributes = CAR_FIELD_PROMPTS.each_with_object({}) do |(field, i18n_key), result|
+       value = ask_field(field, i18n_key, existing_car)
+       return nil if value == :exit
+
+       result[field.to_s] = value
+     end
+
+      build_car(attributes, existing_car)
+    end
+
     private
 
     def ask_field(field, i18n_key, existing_car)
