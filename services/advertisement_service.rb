@@ -8,17 +8,12 @@ class AdvertisementService
   end
 
   def create
-    loop do
-      car = CarFactory.build_from_input
-      return unless car
+    car = CarFactory.build_from_input
+    return unless car
+    return unless valid_car?(car)
 
-      assign_system_fields(car)
-      next unless valid_car?(car)
-
-      @repository.add(car)
-      puts I18n.t('admin.create_success', id: car.id).green
-      break
-    end
+    @repository.add(car)
+    puts I18n.t('admin.create_success', id: car.id).green
   end
 
   def update
@@ -53,11 +48,6 @@ class AdvertisementService
   end
 
   private
-
-  def assign_system_fields(car)
-    car.instance_variable_set(:@id, SecureRandom.uuid)
-    car.instance_variable_set(:@date_added, Time.now.strftime('%d/%m/%y'))
-  end
 
   def preserve_system_fields(old_car, new_car)
     new_car.instance_variable_set(:@id, old_car.id)
