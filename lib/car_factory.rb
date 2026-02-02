@@ -13,7 +13,6 @@ class CarFactory
   }.freeze
 
   class << self
-
     def random_car
       Car.new(
         'id' => SecureRandom.uuid,
@@ -31,11 +30,11 @@ class CarFactory
       puts "\n#{existing_car ? 'Updating existing car:' : 'Creating new car:'}".yellow
 
       attributes = CAR_FIELD_PROMPTS.each_with_object({}) do |(field, i18n_key), result|
-       value = ask_field(field, i18n_key, existing_car)
-       return nil if value == :exit
+        value = ask_field(field, i18n_key, existing_car)
+        return nil if value == :exit
 
-       result[field.to_s] = value
-     end
+        result[field.to_s] = value
+      end
 
       build_car(attributes, existing_car)
     end
