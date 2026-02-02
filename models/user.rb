@@ -7,6 +7,8 @@ class User
   attr_accessor :email
   attr_reader :password_hash, :admin
 
+  alias admin? admin
+
   def self.all
     return [] unless File.exist?(USERS_FILE)
 
@@ -42,9 +44,5 @@ class User
 
   def authenticate?(password)
     BCrypt::Password.new(password_hash) == password
-  end
-
-  def admin?
-    @admin
   end
 end
