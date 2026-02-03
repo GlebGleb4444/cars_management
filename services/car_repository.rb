@@ -25,22 +25,20 @@ class CarRepository
     save!
   end
 
-  def update_car?(index, updated_car)
+  def update_car(index, updated_car)
     cars = all
     return false unless cars[index]
 
     cars[index] = updated_car
     save_all(cars)
-    true
   end
 
-  def delete_car?(index)
+  def delete_car(index)
     cars = all
     return false unless cars[index]
 
     cars.delete_at(index)
     save_all(cars)
-    true
   end
 
   def find(index)

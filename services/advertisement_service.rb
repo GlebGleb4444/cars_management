@@ -40,7 +40,7 @@ class AdvertisementService
     index = choose_car(cars)
     return unless index
 
-    if @repository.delete_car?(index)
+    if @repository.delete_car(index)
       puts I18n.t('admin.delete_success', id: cars[index].id).green
     else
       puts I18n.t('app.invalid_option').red
@@ -95,7 +95,7 @@ class AdvertisementService
   end
 
   def save_updated_car(index, updated_car)
-    @repository.update_car?(index, updated_car)
+    @repository.update_car(index, updated_car)
     puts I18n.t('admin.update_success', id: updated_car.id).green
   end
 end
