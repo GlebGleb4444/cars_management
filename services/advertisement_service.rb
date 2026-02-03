@@ -65,7 +65,7 @@ class AdvertisementService
   def print_validation_errors(validator)
     puts I18n.t('admin.validation_errors').red
     validator.errors.each { |e| puts "- #{e}".red }
-    puts "#{I18n.t('app.retry')}\n\n" if I18n.exists?('app.retry')
+    puts "#{I18n.t('app.retry')}\n\n"
   end
 
   def choose_car(cars)
