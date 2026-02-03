@@ -52,7 +52,7 @@ class CarFactory
 
       input = default_value.to_s if input.empty? && default_value
 
-      %i[year odometer price].include?(field) ? input.to_i : input
+      input
     end
 
     def build_car(attrs, existing_car)

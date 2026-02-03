@@ -10,99 +10,65 @@ class CarValidator
 
   def valid?
     @errors = []
-    validate_make
-    validate_model
-    validate_year
-    validate_odometer
-    validate_price
-    validate_description
+
+    validate_string_field(:make, min: 3, max: 50, format: /\A[a-zA-Z\s-]+\z/,
+                                 format_error: 'errors.car.errors.make.only_letters')
+    validate_string_field(:model, min: 2, max: 50, format: /\A[a-zA-Z0-9\s-]+\z/,
+                                  format_error: 'errors.car.errors.model.only_letters_or_digits')
+
+    validate_integer_field(:year, min: 1900, max: Date.today.year)
+    validate_integer_field(:odometer, min: 0)
+    validate_integer_field(:price, min: 0)
+
+    validate_description(:description, max: 5000)
+
     @errors.empty?
   end
 
   private
 
-  def validate_make
-    return add_error(:make, :required) if car.make.nil? || car.make.strip.empty?
+  def validate_string_field(field, min:, max:, format:, format_error:)
+    value = car.public_send(field)
 
-    check_make_length
-    check_make_format
+    return add_error(field, :required) if value.nil? || value.strip.empty?
+
+    add_error(field, :min_length, min: min) if value.length < min
+    add_error(field, :max_length, max: max) if value.length > max
+    @errors << I18n.t(format_error) unless value.match?(format)
   end
 
-  def check_make_length
-    @errors << I18n.t('errors.car.errors.make.min_length', min: 3) if car.make.length < 3
-    @errors << I18n.t('errors.car.errors.make.max_length', max: 50) if car.make.length > 50
+  def validate_integer_field(field, min: nil, max: nil)
+    value = car.public_send(field)
+    return add_error(field, :required) if value.nil? || value.to_s.strip.empty?
+
+    value = Integer(value, exception: false)
+    return add_error(field, :integer) unless value.is_a?(Integer)
+
+    validate_integer_min(field, value, min)
+    validate_integer_max(field, value, max)
   end
 
-  def check_make_format
-    @errors << I18n.t('errors.car.errors.make.only_letters') unless car.make.match?(/\A[a-zA-Z]+\z/)
+  def validate_integer_min(field, value, min)
+    add_error(field, :min, min: min) if min && value < min
   end
 
-  def validate_model
-    return add_error(:model, :required) if car.model.nil? || car.model.strip.empty?
-
-    check_model_length
-    check_model_format
+  def validate_integer_max(field, value, max)
+    add_error(field, :max, max: max) if max && value > max
   end
 
-  def check_model_length
-    @errors << I18n.t('errors.car.errors.model.min_length', min: 2) if car.model.length < 2
-    @errors << I18n.t('errors.car.errors.model.max_length', max: 50) if car.model.length > 50
-  end
+  def validate_description(field, max: 5000)
+    value = car.public_send(field)
+    return if value.nil?
 
-  def check_model_format
-    @errors << I18n.t('errors.car.errors.model.only_letters_or_digits') unless car.model.match?(/\A[a-zA-Z0-9]+\z/)
-  end
-
-  def validate_year
-    if year_empty?
-      @errors << I18n.t('errors.car.errors.year.required')
-    elsif !car.year.is_a?(Integer)
-      @errors << I18n.t('errors.car.errors.year.integer')
-    else
-      validate_year_range
-    end
-  end
-
-  def year_empty?
-    car.year.nil?
-  end
-
-  def validate_year_range
-    @errors << I18n.t('errors.car.errors.year.min', min: 1900) if car.year < 1900
-    @errors << I18n.t('errors.car.errors.year.max') if car.year > Date.today.year
-  end
-
-  def validate_odometer
-    if car.odometer.nil?
-      @errors << I18n.t('errors.car.errors.odometer.required')
-    elsif !car.odometer.is_a?(Integer)
-      @errors << I18n.t('errors.car.errors.odometer.integer')
-    elsif car.odometer.negative?
-      @errors << I18n.t('errors.car.errors.odometer.min', min: 0)
-    end
-  end
-
-  def validate_price
-    if car.price.nil?
-      @errors << I18n.t('errors.car.errors.price.required')
-    elsif !car.price.is_a?(Integer)
-      @errors << I18n.t('errors.car.errors.price.integer')
-    elsif car.price.negative?
-      @errors << I18n.t('errors.car.errors.price.min', min: 0)
-    end
-  end
-
-  def validate_description
-    return if car.description.nil?
-
-    unless car.description.is_a?(String)
-      @errors << I18n.t('errors.car.errors.description.string')
+    unless value.is_a?(String)
+      add_error(field, :string)
       return
     end
-    @errors << I18n.t('errors.car.errors.description.max_length', max: 5000) if car.description.length > 5000
+
+    add_error(field, :max_length, max:) if value.length > max
   end
 
-  def add_error(field, type)
-    @errors << I18n.t("errors.car.errors.#{field}.#{type}")
+  def add_error(field, type, **)
+    @errors << I18n.t("errors.car.errors.#{field}.#{type}", **)
   end
 end
