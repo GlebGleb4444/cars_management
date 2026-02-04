@@ -16,6 +16,11 @@ class Car
     @errors = []
   end
 
+  def preserve_system_fields_from(car)
+    @id = car.id
+    @date_added = car.date_added
+  end
+
   def to_h
     {
       id: @id,

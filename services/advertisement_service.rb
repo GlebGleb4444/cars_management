@@ -50,8 +50,7 @@ class AdvertisementService
   private
 
   def preserve_system_fields(old_car, new_car)
-    new_car.instance_variable_set(:@id, old_car.id)
-    new_car.instance_variable_set(:@date_added, old_car.date_added)
+    new_car.preserve_system_fields_from(old_car)
   end
 
   def valid_car?(car)
@@ -65,7 +64,7 @@ class AdvertisementService
   def print_validation_errors(validator)
     puts I18n.t('admin.validation_errors').red
     validator.errors.each { |e| puts "- #{e}".red }
-    puts "#{I18n.t('app.retry')}\n\n"
+    puts I18n.t('app.retry').to_s.red
   end
 
   def choose_car(cars)

@@ -28,6 +28,8 @@ en:
     hello: "Hello, %{email}!"
     goodbye: "Goodbye, %{email}!"
 
+    retry: "Please try again"
+
     my_searches: "My searches"
     no_searches: "You have no saved searches yet."
 
