@@ -11,10 +11,8 @@ class CarValidator
   def valid?
     @errors = []
 
-    validate_string_field(:make, min: 3, max: 50, format: /\A[a-zA-Z\s-]+\z/,
-                                 format_error: 'errors.car.errors.make.only_letters')
-    validate_string_field(:model, min: 2, max: 50, format: /\A[a-zA-Z0-9\s-]+\z/,
-                                  format_error: 'errors.car.errors.model.only_letters_or_digits')
+    validate_string_field(:make, min: 3, max: 50, format: /\A[a-zA-Z\s-]+\z/)
+    validate_string_field(:model, min: 2, max: 50, format: /\A[a-zA-Z0-9\s-]+\z/)
 
     validate_integer_field(:year, min: 1900, max: Date.today.year)
     validate_integer_field(:odometer, min: 0)
@@ -27,14 +25,14 @@ class CarValidator
 
   private
 
-  def validate_string_field(field, min:, max:, format:, format_error:)
+  def validate_string_field(field, min:, max:, format:)
     value = car.public_send(field)
 
     return add_error(field, :required) if value.nil? || value.strip.empty?
 
     add_error(field, :min_length, min: min) if value.length < min
     add_error(field, :max_length, max: max) if value.length > max
-    @errors << I18n.t(format_error) unless value.match?(format)
+    add_error(field, :format) unless value.match?(format)
   end
 
   def validate_integer_field(field, min: nil, max: nil)

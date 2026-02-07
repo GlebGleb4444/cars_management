@@ -84,13 +84,13 @@ en:
           required: "Make is required"
           min_length: "Make must have at least %{min} symbols"
           max_length: "Make must have at most %{max} symbols"
-          only_letters: "Make must contain only English letters"
+          format: "Make must contain only English letters"
 
         model:
           required: "Model is required"
           min_length: "Model must have at least %{min} symbols"
           max_length: "Model must have at most %{max} symbols"
-          only_letters_or_digits: "Model must contain only English letters or digits"
+          format: "Model must contain only English letters or digits"
 
         year:
           required: "Year is required"

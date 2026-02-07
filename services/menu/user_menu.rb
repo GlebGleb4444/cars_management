@@ -16,10 +16,10 @@ class UserMenu < Menu
     case choice
     when '1', 'search', 'search a car' then @main_program.run_search
     when '2', 'show', 'show all cars' then @main_program.show_all_cars
-    when '3', 'help' then @menu.display_help
+    when '3', 'help' then @main_menu.display_help
     when '4', 'my searches', 'searches' then @main_program.show_my_searches
-    when '5', 'logout', 'out' then @menu.logout
-    when '6', 'exit', 'quit' then @menu.exit_program
+    when '5', 'logout', 'out' then @main_menu.logout
+    when '6', 'exit', 'quit' then @main_menu.exit_program
     else
       puts I18n.t('app.invalid_option').red
     end

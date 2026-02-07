@@ -17,9 +17,9 @@ class GuestMenu < Menu
     when '1', 'search', 'search a car' then @main_program.run_search
     when '2', 'show', 'show all cars' then @main_program.show_all_cars
     when '3', 'help' then @menu.display_help
-    when '4', 'login', 'log' then @menu.login
-    when '5', 'signup', 'reg' then @menu.signup
-    when '6', 'exit', 'quit' then @menu.exit_program
+    when '4', 'login', 'log' then @main_menu.login
+    when '5', 'signup', 'reg' then @main_menu.signup
+    when '6', 'exit', 'quit' then @main_menu.exit_program
     else
       puts I18n.t('app.invalid_option').red
     end

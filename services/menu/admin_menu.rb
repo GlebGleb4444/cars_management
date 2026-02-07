@@ -15,7 +15,7 @@ class AdminMenu < Menu
     when '1' then @main_program.create_advertisement
     when '2' then @main_program.update_advertisement
     when '3' then @main_program.delete_advertisement
-    when '4', 'logout', 'out' then @menu.logout
+    when '4', 'logout', 'out' then @main_menu.logout
     else
       puts I18n.t('app.invalid_option').red
     end

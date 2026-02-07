@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Menu
-  def initialize(main_program, menu)
+  def initialize(main_program, main_menu)
     @main_program = main_program
-    @menu = menu
+    @main_menu = main_menu
   end
 end
