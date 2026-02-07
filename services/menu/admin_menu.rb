@@ -2,12 +2,7 @@
 
 require_relative 'menu'
 
-class AdminMenu
-  def initialize(main_program, menu)
-    @main_program = main_program
-    @menu = menu
-  end
-
+class AdminMenu < Menu
   def display
     puts "1. #{I18n.t('app.menu.create_ad')}"
     puts "2. #{I18n.t('app.menu.update_ad')}"

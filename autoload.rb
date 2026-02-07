@@ -29,7 +29,7 @@ require_relative 'services/auth_service'
 require_relative 'services/user_search_history'
 require_relative 'services/advertisement_service'
 
-require_relative 'services/menu/menu'
+require_relative 'services/main_menu'
 require_relative 'services/menu/admin_menu'
 require_relative 'services/menu/user_menu'
 require_relative 'services/menu/guest_menu'

@@ -55,7 +55,7 @@ class Main
   end
 
   def menu(main, auth_service)
-    Menu.new(main, auth_service).start
+    MainMenu.new(main, auth_service).start
   end
 
   def load_data

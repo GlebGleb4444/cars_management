@@ -2,12 +2,7 @@
 
 require_relative 'menu'
 
-class GuestMenu
-  def initialize(main_program, menu)
-    @main_program = main_program
-    @menu = menu
-  end
-
+class GuestMenu < Menu
   def display
     puts "1. #{I18n.t('app.menu.search_car')}"
     puts "2. #{I18n.t('app.menu.show_all')}"
