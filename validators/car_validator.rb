@@ -58,12 +58,11 @@ class CarValidator
     value = car.public_send(field)
     return if value.nil?
 
-    unless value.is_a?(String)
+    if value.is_a?(String)
+      add_error(field, :max_length, max:) if value.length > max
+    else
       add_error(field, :string)
-      return
     end
-
-    add_error(field, :max_length, max:) if value.length > max
   end
 
   def add_error(field, type, **)
