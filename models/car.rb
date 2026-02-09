@@ -2,7 +2,7 @@
 
 # Car model to represent a car listing
 class Car
-  attr_reader :id, :make, :model, :year, :odometer, :price, :description, :date_added
+  attr_reader :id, :make, :model, :year, :odometer, :price, :description, :date_added, :errors
 
   def initialize(car_attr)
     @id = car_attr['id']
@@ -13,6 +13,12 @@ class Car
     @price = car_attr['price']
     @description = car_attr['description']
     @date_added = car_attr['date_added']
+    @errors = []
+  end
+
+  def preserve_system_fields_from(car)
+    @id = car.id
+    @date_added = car.date_added
   end
 
   def to_h

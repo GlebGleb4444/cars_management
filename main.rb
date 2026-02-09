@@ -32,6 +32,18 @@ class Main
     @renderer.display_my_searches(searches)
   end
 
+  def create_advertisement
+    AdvertisementService.new.create
+  end
+
+  def update_advertisement
+    AdvertisementService.new.update
+  end
+
+  def delete_advertisement
+    AdvertisementService.new.delete
+  end
+
   private
 
   def perform_search_cycle
@@ -43,7 +55,7 @@ class Main
   end
 
   def menu(main, auth_service)
-    Menu.new(main, auth_service).start
+    MainMenu.new(main, auth_service).start
   end
 
   def load_data

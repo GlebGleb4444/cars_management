@@ -1,7 +1,16 @@
 en:
+  admin:
+    enter_id: "Enter advertisement ID: "
+    create_success: "You have successfully created the car with ID %{id}!"
+    update_success: "You have successfully updated the car with ID %{id}!"
+    delete_success: "You have successfully deleted the car with ID %{id}!"
+    validation_errors: "Validation errors:"
+    no_cars: "There are no cars available."
+    select_number: "Select car number (or type 'exit' to cancel):"
+    retry: "Please try again."
+
   app:
     choose_language: "Choose language: 1) English 2) Ukrainian"
-
     welcome_message: "Welcome to the car search system"
     main_menu: "Main menu"
 
@@ -19,8 +28,9 @@ en:
     hello: "Hello, %{email}!"
     goodbye: "Goodbye, %{email}!"
 
-    my_searches: "My searches"
+    retry: "Please try again"
 
+    my_searches: "My searches"
     no_searches: "You have no saved searches yet."
 
     help_text: |
@@ -38,6 +48,9 @@ en:
       login: "Login"
       logout: "Logout"
       signup: "Sign up"
+      create_ad: "Create advertisement"
+      update_ad: "Update advertisement"
+      delete_ad: "Delete advertisement"
 
   input:
     select_rules: "Please select search rules."
@@ -49,6 +62,10 @@ en:
     price_to: "Please choose price to:"
     sort_by: "Choose sorting field (price, date_added or leave blank):"
     sort_direction: "Choose sorting direction (asc, desc or leave blank):"
+    year: "Please enter year:"
+    odometer: "Please enter odometer:"
+    price: "Please enter price:"
+    description: "Please enter description:"
 
   table:
     number: "№"
@@ -61,13 +78,49 @@ en:
     date_added: "Date added"
 
   errors:
+    car:
+      errors:
+        make:
+          required: "Make is required"
+          min_length: "Make must have at least %{min} symbols"
+          max_length: "Make must have at most %{max} symbols"
+          format: "Make must contain only English letters"
+
+        model:
+          required: "Model is required"
+          min_length: "Model must have at least %{min} symbols"
+          max_length: "Model must have at most %{max} symbols"
+          format: "Model must contain only English letters or digits"
+
+        year:
+          required: "Year is required"
+          integer: "Year must be an integer"
+          min: "Year must be >= %{min}"
+          max: "Year cannot be greater than current year"
+
+        odometer:
+          required: "Odometer is required"
+          integer: "Odometer must be an integer"
+          min: "Odometer must be >= %{min}"
+
+        price:
+          required: "Price is required"
+          integer: "Price must be an integer"
+          min: "Price must be >= %{min}"
+
+        description:
+          string: "Description must be a string"
+          max_length: "Description cannot exceed %{max} symbols"
+
     auth:
       invalid_credentials: "Invalid email or password"
       signup_failed: "Failed to create a new user"
+
     email:
       invalid_format: "Invalid email format or less than 5 characters before @"
       already_exists: "User with this email already exists"
+
     password:
       length: "Password must be 8-20 characters long"
       uppercase: "Password must contain at least 1 capital letter"
-      special_chars: "Password must contain at least 2 special characters"
+      special_character: "Password must contain at least 2 special characters"
